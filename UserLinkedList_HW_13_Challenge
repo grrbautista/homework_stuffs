@@ -1,0 +1,81 @@
+/**
+ * 
+ * <p>Purdue University -- CS18000 -- Spring 2025</p>
+ *
+ * @author Gabriel Bautista Purdue CS 
+ * @version November 22, 2025
+ */
+
+
+public class UserLinkedList implements WalkThroughUserLinkedListInterface {
+    
+    private UserNode headNode;
+    
+    public UserLinkedList() {
+        this.headNode = null;
+    }
+    
+    
+    
+    public boolean addUserNode(String name) { //*
+        
+        if (this.headNode == null) {
+            this.headNode = new UserNode(name);
+            return true;
+        } 
+        
+        
+        
+        
+        
+        
+        
+        
+        UserNode current = headNode;
+        
+        while(current.getNextNode() != null) {
+
+            if (current.getName().equals(name)) {
+                return false;
+            }
+            current = current.getNextNode();
+        }
+        
+        
+        if (current.getName().equals(name)) {
+            return false;
+        }
+
+        
+        UserNode last = headNode;
+        
+        while (last.getNextNode() != null) {
+            last = last.getNextNode();                
+        }
+        
+        UserNode nextUserNode = new UserNode(name);
+        last.setNextNode(nextUserNode);
+        return true;
+
+        
+    }
+    
+     /**
+     * public void printUserList();
+     * Starting at the UserNode pointed at by headPointer. Traverse the list and print each nodes name on a new line.
+     * You should use println() and getName to do this.
+     * If the headNode is null it should print "List is null!"
+     */
+    
+    public void printUserList() { //*
+        
+        UserNode current = headNode;
+        
+        while (current != null) {
+            System.out.println(current.getName());
+            current = current.getNextNode();
+        }
+        
+    }
+    
+}
